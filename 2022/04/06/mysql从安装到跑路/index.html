@@ -9,8 +9,6 @@
     
     <title>
         
-            Hexo的入门 |
-        
         Keep Theme
     </title>
     
@@ -118,7 +116,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Hexo的入门</span>
+            <span class="title-hover-animation"></span>
         </div>
 
         
@@ -137,8 +135,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-04-06 14:37:01</span>
-        <span class="mobile">2022-04-06 14:37</span>
+        <span class="pc">2022-04-06 15:53:21</span>
+        <span class="mobile">2022-04-06 15:53</span>
     </span>
     
     
@@ -155,18 +153,22 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="Hexo的入门"><a href="#Hexo的入门" class="headerlink" title="Hexo的入门"></a>Hexo的入门</h1><p>须知：</p>
-<p>本篇文章讲的是上手Hexo并且将博客部署在github上</p>
-<h2 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo"></a>什么是Hexo</h2><p>一个好看的、易上手的博客框架</p>
-<p>好看且好用，还能用Markdown语法，爱了爱了</p>
-<h2 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h2><p>需要安装</p>
-<ul>
-<li>Node.js</li>
-<li>Git</li>
-</ul>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+            <h1 id="mysql从安装到跑路"><a href="#mysql从安装到跑路" class="headerlink" title="mysql从安装到跑路"></a>mysql从安装到跑路</h1><p>下载解压到具体目录下</p>
+<p>配置环境变量，在环境变量下的path，写下bin目录</p>
+<p>新建mysql配置文件ini，在mysql文件夹下</p>
+<p><img src="C:\Users\zfx\AppData\Roaming\Typora\typora-user-images\image-20211213155621181.png" alt="image-20211213155621181"></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[client]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8</span><br><span class="line"> </span><br><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="comment"># 设置3306端口</span></span><br><span class="line"><span class="attr">port</span> = <span class="number">3306</span></span><br><span class="line"><span class="comment"># 设置mysql的安装目录</span></span><br><span class="line"><span class="attr">basedir</span>=D:\Environment\mysql\mysql-<span class="number">5.7</span>.<span class="number">36</span>\</span><br><span class="line"><span class="comment"># 设置 mysql数据库的数据的存放目录，MySQL 8+ 不需要以下配置，系统自己生成即可，否则有可能报错</span></span><br><span class="line"><span class="comment">#会自动生成data文件夹，不需要写</span></span><br><span class="line"><span class="comment"># datadir=D:\Environment\mysql\mysql-5.7.36\data\</span></span><br><span class="line"><span class="comment">#跳过密码，第一次安装的时候，或者忘记密码可以使用，后面注释掉</span></span><br><span class="line">skip-grant-tables</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">启动管理员模式下的命令提示符（cmd），运行到bin目录下</span><br><span class="line"></span><br><span class="line">cd /d D:\Environment\mysql\mysql-5.7.36\bin</span><br><span class="line"></span><br><span class="line">安装mysql</span><br><span class="line"></span><br><span class="line">mysqld -install</span><br><span class="line"></span><br><span class="line">初始化数据库文件</span><br><span class="line"></span><br><span class="line">mysqld --initialize-insecure --user=mysql</span><br><span class="line"></span><br><span class="line">启动mysql，进去修改密码</span><br><span class="line"></span><br><span class="line">net start mysql</span><br><span class="line"></span><br><span class="line">启动mysql通过命令行,修改密码</span><br><span class="line"></span><br><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">update mysql.user set authentication_string=password(&#x27;123456&#x27;) where user=&#x27;root&#x27; and Host = &#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
 
+<p>注释ini的中的跳过密码</p>
+<p>重启mysql。进入测试。</p>
+<p><img src="C:\Users\zfx\AppData\Roaming\Typora\typora-user-images\image-20211213155922826.png" alt="image-20211213155922826"></p>
+<p><strong>sc delete mysql</strong></p>
+<p><strong>重新开始</strong></p>
+<p>查询 </p>
+<p>select</p>
+<h2 id="更新update"><a href="#更新update" class="headerlink" title="更新update"></a>更新update</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span>  table_name</span><br><span class="line"><span class="keyword">set</span> column1<span class="operator">=</span>value1,column2<span class="operator">=</span>value2,</span><br><span class="line"><span class="keyword">where</span> some_column<span class="operator">=</span>some_value;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">UPDATE</span> Websites </span><br><span class="line"><span class="keyword">SET</span> alexa<span class="operator">=</span><span class="string">&#x27;5000&#x27;</span>, country<span class="operator">=</span><span class="string">&#x27;USA&#x27;</span> </span><br><span class="line"><span class="keyword">WHERE</span> name<span class="operator">=</span><span class="string">&#x27;菜鸟教程&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -180,29 +182,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/04/06/mysql%E4%BB%8E%E5%AE%89%E8%A3%85%E5%88%B0%E8%B7%91%E8%B7%AF/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item"></span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/04/06/demo-post/"
+                           href="/2022/04/06/Hexo%E7%9A%84%E5%85%A5%E9%97%A8/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">demo post</span>
+                                <span class="post-nav-title-item">Hexo的入门</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
