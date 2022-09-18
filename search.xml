@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>docker是什么</title>
+    <url>/2022/09/18/docker%E6%98%AF%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[<h1 id="docker是什么"><a href="#docker是什么" class="headerlink" title="docker是什么"></a>docker是什么</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">alert</span>(<span class="string">&#x27;Hello World!&#x27;</span>);<span class="comment">//这是一段js代码块</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="优雅的分割线"><a href="#优雅的分割线" class="headerlink" title="优雅的分割线"></a>优雅的分割线</h2><img src="/2022/09/18/docker%E6%98%AF%E4%BB%80%E4%B9%88/jx.jpg" class="" title="江西彩礼分布图（hexo)">
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>blog01</title>
+    <url>/2022/09/18/blog01/</url>
+    <content><![CDATA[<p>docker 学习笔记</p>
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">alert</span>(<span class="string">&#x27;Hello World!&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>a<br>aa</p>
+]]></content>
+      <categories>
+        <category>work</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+</search>
