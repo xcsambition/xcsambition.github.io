@@ -1048,7 +1048,7 @@
 
 
 <h2 id="反向代理服务器"><a href="#反向代理服务器" class="headerlink" title="反向代理服务器"></a>反向代理服务器</h2><p>方向代理是相对于正向代理的概念，正向代理是隐藏客户端，反向代理就是隐藏服务器、是指对服务器的代理，可以实现屏蔽真实的服务器，并作为服务器的出入口</p>
-
+<img src="/2022/09/19/HTTP%E4%BB%A3%E7%90%86/reverse-proxy.png" class="" title="反向代理">
 
 <h2 id="实现加密传输的HTTPS代理？"><a href="#实现加密传输的HTTPS代理？" class="headerlink" title="实现加密传输的HTTPS代理？"></a>实现加密传输的<em>HTTPS</em>代理？</h2><p>为了确保数据传输的安全性，浏览器与服务器之间的HTTPS通信是加密的，所以浏览器通过代理服务器发送<em><strong>HTTPS</strong></em>请求，请求的站点地址和段都加密保存在<em><strong>HTTPS</strong></em>请求头中，代理服务器是如何确保通信是加密的又能进行转发呢？</p>
 <p><strong>隧道代理&#x2F;<em>CONNECT</em></strong></p>
