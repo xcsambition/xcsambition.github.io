@@ -18,63 +18,9 @@
 <td>shutdown -h 10</td>
 <td>10分钟后关机</td>
 </tr>
-<tr>
-<td>shutdown -h 11:00</td>
-<td>11：00关机</td>
-</tr>
-<tr>
-<td>shutdown -h +10</td>
-<td>预定时间关机（10分钟后）</td>
-</tr>
-<tr>
-<td>shutdown -c</td>
-<td>取消指定时间关机</td>
-</tr>
-<tr>
-<td>shutdown -r now</td>
-<td>重启</td>
-</tr>
-<tr>
-<td>shutdown -r 10</td>
-<td>10分钟之后重启</td>
-</tr>
-<tr>
-<td>shutdown -r 11:00</td>
-<td>定时重启</td>
-</tr>
-<tr>
-<td>reboot</td>
-<td>重启</td>
-</tr>
-<tr>
-<td>init 6</td>
-<td>重启</td>
-</tr>
-<tr>
-<td>init 0</td>
-<td>⽴刻关机</td>
-</tr>
-<tr>
-<td>telinit 0</td>
-<td>关机</td>
-</tr>
-<tr>
-<td>poweroff</td>
-<td>⽴刻关机</td>
-</tr>
-<tr>
-<td>halt</td>
-<td>关机</td>
-</tr>
-<tr>
-<td>sync</td>
-<td>buff数据同步到磁盘</td>
-</tr>
-<tr>
-<td>logout</td>
-<td>退出登录Shell</td>
-</tr>
 </tbody></table>
+<span id="more"></span>
+<p>| shutdown -h 11:00 | 11：00关机 |<br>| shutdown -h +10 | 预定时间关机（10分钟后） |<br>| shutdown -c | 取消指定时间关机 |<br>| shutdown -r now | 重启 |<br>| shutdown -r 10 | 10分钟之后重启 |<br>| shutdown -r 11:00 | 定时重启 |<br>| reboot | 重启 |<br>| init 6 | 重启 |<br>| init 0 | ⽴刻关机 |<br>| telinit 0 | 关机 |<br>| poweroff | ⽴刻关机 |<br>| halt | 关机 |<br>| sync | buff数据同步到磁盘 |<br>| logout | 退出登录Shell |</p>
 <h1 id="系统信息和性能查看"><a href="#系统信息和性能查看" class="headerlink" title="系统信息和性能查看"></a>系统信息和性能查看</h1><table>
 <thead>
 <tr>
@@ -1087,7 +1033,7 @@
     <content><![CDATA[<p>参考摘抄自：<a href="https://blog.csdn.net/FrancisHe/article/details/84667562">如何正确使用http proxy</a></p>
 <h2 id="为什么需要-HTTP-代理"><a href="#为什么需要-HTTP-代理" class="headerlink" title="为什么需要 HTTP 代理"></a>为什么需要 <em>HTTP</em> 代理</h2><ul>
 <li>访问内网，访问内部资源</li>
-<li>设定权限限制</li>
+<li>设定权限限制<span id="more"></span></li>
 <li>防止访问病毒网站</li>
 <li>做缓存降低带宽开销</li>
 <li>隐藏真实<em><strong>IP</strong></em></li>
