@@ -1090,9 +1090,10 @@
     <content><![CDATA[<h2 id="设计目的"><a href="#设计目的" class="headerlink" title="设计目的"></a>设计目的</h2><ol>
 <li>某个类只有一个实例</li>
 <li>对外提供获得实例的方法</li>
-<li>需要自己来创建实例<span id="more"></span>
-推演单例模式</li>
+<li>需要自己来创建实例</li>
 </ol>
+<p><strong>让我们来推演单例模式</strong></p>
+<span id="more"></span>
 <h2 id="版本1"><a href="#版本1" class="headerlink" title="版本1"></a><strong>版本1</strong></h2><ol>
 <li><p>构造器私有，使得外部不能创建对象</p>
 </li>
