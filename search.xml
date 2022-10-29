@@ -1084,4 +1084,90 @@
 <p><strong>赐我智慧，去分辨这两者的区别</strong></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>单例模式</title>
+    <url>/2022/10/29/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>设计目的</p>
+<ol>
+<li>某个类只有一个实例</li>
+<li>对外提供获得实例的方法</li>
+<li>需要自己来创建实例</li>
+</ol>
+<p>推演单例模式</p>
+<p><strong>版本1</strong>  </p>
+<ol>
+<li><p>构造器私有，使得外部不能创建对象</p>
+</li>
+<li><p>提供对外的方法来获得唯一对象</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> calss Sington &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Sington</span> <span class="variable">sington</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Sington</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">Sington</span>() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> sington;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>出现的问题：</p>
+<ul>
+<li>类加载的时候，对象就已经创建了，可能会花费大量的资源</li>
+</ul>
+<p><strong>版本2</strong></p>
+<ol>
+<li>调用方法的时候再创建对象</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Sington</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Sington sington;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Sington</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (sington == <span class="literal">null</span>) &#123;</span><br><span class="line">            sington = <span class="keyword">new</span> <span class="title class_">Sington</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sington;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>出现的问题</p>
+<ul>
+<li>并发情况下，可能会创建多个实例</li>
+</ul>
+<p><strong>版本3</strong></p>
+<ol>
+<li>加锁解决并发问题</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Sington</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Sington sington;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Sington</span><span class="params">()</span> &#123;&#125;;</span><br><span class="line">    <span class="keyword">private</span> synchronize <span class="keyword">static</span> <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (sington == <span class="literal">null</span>) &#123;</span><br><span class="line">            sington = <span class="keyword">new</span> <span class="title class_">Sington</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sington;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>出现的问题</p>
+<ul>
+<li>每次获得实例都要加锁，性能有问题</li>
+</ul>
+<p><strong>版本4</strong></p>
+<ol>
+<li>通过双重检测锁解决性能问题</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Sington</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Sington sington;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Sington</span><span class="params">()</span> &#123;&#125;;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (sington ==<span class="literal">null</span>) &#123;</span><br><span class="line">        	<span class="keyword">synchronized</span>(Sington.class) &#123;	</span><br><span class="line">            	<span class="keyword">if</span> (sington == <span class="literal">null</span>) &#123;</span><br><span class="line">            		sington = <span class="keyword">new</span> <span class="title class_">Sington</span>();</span><br><span class="line">        		&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sington;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>思考一下为什么需要俩次检测</strong></p>
+<p>运行顺序的逻辑是</p>
+<ol>
+<li>检测变量是否被初始化（不获得锁），如果初始化就返回</li>
+<li>获得锁</li>
+<li>再次检测变量是否被初始化，还没被初始化就创建对象</li>
+</ol>
+<p>如果只有第一个检测，就会有多个线程通过了第一个检测，然后先后拿到锁并创建实例对象；如果只有第二个检测，就会有之前的加锁性能问题。</p>
+<p>最后，只有在第一次初始化的时候才会出现加锁的情况，性能问题得到改善。</p>
+<p><strong>存在的问题</strong></p>
+<p>实例化对象并不是一个原子操作，实际上有三个操作</p>
+<ol>
+<li>分配内存空间</li>
+<li>初始化对象</li>
+<li>将对象指向刚分配的内存空间</li>
+</ol>
+<p>有些编译器为了性能的提升，可以出现指令重排，即顺序成了</p>
+<ol>
+<li>分配内存空间</li>
+<li>将对象指向刚分配的内存空间</li>
+<li>初始化对象</li>
+</ol>
+<p>并发情况下，会访问未初始化的对象，可能会有问题</p>
+<p><strong>最终版</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Sington</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span>  Sington sington;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Sington</span><span class="params">()</span> &#123;&#125;;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (sington ==<span class="literal">null</span>) &#123;</span><br><span class="line">        	<span class="keyword">synchronized</span>(Sington.class) &#123;	</span><br><span class="line">            	<span class="keyword">if</span> (sington == <span class="literal">null</span>) &#123;</span><br><span class="line">            		sington = <span class="keyword">new</span> <span class="title class_">Sington</span>();</span><br><span class="line">        		&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sington;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>volatile 可以使得重排被禁止，所有的写操作会在读操作之前。</p>
+<p>要素</p>
+<ol>
+<li>构造器私有防止外部创建对象</li>
+<li>调用方法才创建对象，不会在类加载的时候花费资源</li>
+<li>解决了并发情况下的问题</li>
+<li>解决了加锁导致的性能问题</li>
+<li>解决了因指令重排导致的访问未初始化对象的问题</li>
+</ol>
+]]></content>
+  </entry>
 </search>
